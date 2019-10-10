@@ -2308,19 +2308,17 @@ public class Bank_v1 {
 
   public static void main(String[] args) {
     System.out.println("in main");
+//    long startTime = System.currentTimeMillis();
     Bank_v1 bank = new Bank_v1();
-
     System.out.println(bank.transactions("n", 0).orElse("No Bal Available"));
     System.out.println(bank.transactions("c", 1500).orElse(""));
     System.out.println(bank.transactions("n", 0).orElse("No Bal Available"));
     System.out.println(bank.transactions("d", 1500).orElse(""));
     System.out.println(bank.transactions("n", 0).orElse("No Bal Available"));
-
-    Optional<String> opres1 = bank.transactions("tt-credit", 0);
-    String res1 = opres1.isPresent() ? opres1.toString() : "No Output"; //
-    System.out.println(res1);
-
+    System.out.println(bank.transactions("tt-credit", 0).orElse("No Output"));
     System.out.println(bank.transactions("tt-debit", 0).orElse("No Output"));
+//    long endTime = System.currentTimeMillis();
+//    System.out.println("Total Time Taken:"+ (endTime-startTime) +" ms");
   }
 
   private Optional<String> transactions(String flag, double amount) {
@@ -2352,24 +2350,22 @@ public class Bank_v1 {
     }
 
     if (flag.contentEquals("tt-debit")) {
-      long startTime = System.nanoTime();
       List<String[]> transList = transactionMaster.get("1234");
 
       transList.stream().filter(allTrans -> allTrans[1].equalsIgnoreCase("debit"))
           .forEach(debitTrans -> System.out.println(
               debitTrans[0] + " " + debitTrans[1] + " " + debitTrans[2] + " " + debitTrans[3]));
-      long endTime = System.nanoTime();
-      System.out.println("Operation Time for tt-debit: " + (endTime - startTime));
-
     }
 
     if (flag.contentEquals("tt-credit")) {
+//      long startTime = System.currentTimeMillis();
       List<String[]> transList = transactionMaster.get("1234");
-
       transList.stream().filter(allTrans -> allTrans[1].equalsIgnoreCase("credit"))
           .forEach(creditTrans -> System.out.println(
               creditTrans[0] + " " + creditTrans[1] + " " + creditTrans[2] + " " + creditTrans[3]));
-
+      
+//      long endTime = System.currentTimeMillis();
+//      System.out.println("Total Time Taken:"+ (endTime-startTime) +" ms");
     }
 
     return Optional.empty();

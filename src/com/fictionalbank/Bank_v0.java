@@ -2308,6 +2308,7 @@ public class Bank_v0 {
   
   public static void main(String[] args) {
     System.out.println("in main");
+//    long startTime = System.currentTimeMillis();
     Bank_v0 bank = new Bank_v0();
     System.out.println(bank.transactions("n", 0));
     System.out.println(bank.transactions("c", 1500));
@@ -2316,6 +2317,8 @@ public class Bank_v0 {
     System.out.println(bank.transactions("n", 0));
     System.out.println(bank.transactions("tt-debit", 0));
     System.out.println(bank.transactions("tt-credit", 0));
+//    long endTime = System.currentTimeMillis();
+//    System.out.println("Total Time Taken:"+ (endTime-startTime) +" ms");
   }
   
   
@@ -2346,24 +2349,24 @@ public class Bank_v0 {
     }
 
     if(flag.contentEquals("tt-debit")) {
-      long startTime = System.nanoTime();
       List<String[]> transList = transactionMaster.get("1234");
       for(String[] singleTrans : transList) {
         if(singleTrans[1].equalsIgnoreCase("debit")) {
           System.out.println(singleTrans[0]+" "+singleTrans[1]+" "+singleTrans[2]+" "+singleTrans[3]);
         }
       }
-      long endTime = System.nanoTime();
-      System.out.println("Operation Time for tt-debit: "+ (endTime-startTime));
     }
     
     if(flag.contentEquals("tt-credit")) {
+//      long startTime = System.currentTimeMillis();
       List<String[]> transList = transactionMaster.get("1234");
       for(String[] singleTrans : transList) {
         if(singleTrans[1].equalsIgnoreCase("credit")) {
           System.out.println(singleTrans[0]+" "+singleTrans[1]+" "+singleTrans[2]+" "+singleTrans[3]);
         }
       }
+//      long endTime = System.currentTimeMillis();
+//      System.out.println("Total Time Taken:"+ (endTime-startTime) +" ms");
     }
     
     return null;
