@@ -23,6 +23,7 @@ public class Bank_v1 {
     String[] trans3 = { "01-Sep-2018", "Credit", "100.10", "100.10" };
     String[] trans4 = { "01-Sep-2018", "Credit", "100.10", "100.10" };
     String[] trans5 = { "01-Sep-2018", "Credit", "100.10", "100.10" };
+
     String[] trans6 = { "01-Sep-2018", "Credit", "100.10", "100.10" };
     String[] trans7 = { "01-Sep-2018", "Credit", "100.10", "100.10" };
     String[] trans8 = { "01-Sep-2018", "Credit", "100.10", "100.10" };
@@ -1166,6 +1167,7 @@ public class Bank_v1 {
     list0.add(trans3);
     list0.add(trans4);
     list0.add(trans5);
+
     list0.add(trans6);
     list0.add(trans7);
     list0.add(trans8);
@@ -2363,7 +2365,7 @@ public class Bank_v1 {
       transList.stream().filter(allTrans -> allTrans[1].equalsIgnoreCase("credit"))
           .forEach(creditTrans -> System.out.println(
               creditTrans[0] + " " + creditTrans[1] + " " + creditTrans[2] + " " + creditTrans[3]));
-      
+
 //      long endTime = System.currentTimeMillis();
 //      System.out.println("Total Time Taken:"+ (endTime-startTime) +" ms");
     }
